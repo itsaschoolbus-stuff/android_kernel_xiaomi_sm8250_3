@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 DEVICE=$1
 KERNEL_DIR=$(dirname $(realpath ${BASH_SOURCE[0]}))
 DTSI_DIR=$KERNEL_DIR/arch/arm64/boot/dts/vendor/qcom
@@ -38,12 +37,6 @@ susfs() {
 	sed -i 's/# CONFIG_KSU_SUSFS_SUS_MAP is not set/CONFIG_KSU_SUSFS_SUS_MAP=y/g' $KERNEL_DIR/arch/arm64/configs/vendor/${DEVICE}_defconfig
 }
 
-
 aosp_build
-
-if [[ $@ =~ "ksu" ]]; then
-	ksu
-fi
-if [[ $@ =~ "susfs" ]]; then
-	susfs
-fi
+ksu
+susfs
