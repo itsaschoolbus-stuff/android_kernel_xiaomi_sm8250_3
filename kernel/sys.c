@@ -1257,9 +1257,6 @@ SYSCALL_DEFINE1(newuname, struct new_utsname __user *, name)
             strlcpy(tmp.release, "5.10.248", sizeof(tmp.release));
         }
     }
-	else if (cur_uid >= 1000) {
-        strlcpy(tmp.release, "5.10.248-Oxygen+", sizeof(tmp.release));
-    }
 #ifdef CONFIG_KSU_SUSFS_SPOOF_UNAME
 	susfs_spoof_uname(&tmp);
 #endif
